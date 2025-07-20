@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "book")
 public class Book {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookId;
@@ -24,9 +25,11 @@ public class Book {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("book")
     private List<Story> storyList = new ArrayList<>();
+    
     public int getBookId() {
         return bookId;
     }
+    
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
